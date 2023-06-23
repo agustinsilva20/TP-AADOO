@@ -8,36 +8,31 @@ public class ModuloAutenticacionAdapter implements Autentificador {
 
     private HashMap<String,String> usuarios = new HashMap<String,String>();
 
-    /**
-     * Default constructor
-     */
     public ModuloAutenticacionAdapter() {}
 
-    /**
-     * @param nombreUsuario; String 
-     * @param contrasenia
-     */
-    public void login(String nombreUsuario, String contrasenia) {
+    public Boolean login(String nombreUsuario, String contrasenia) {
         if (usuarios.isEmpty()) {
-            throw new RuntimeException("No hay usuarios cargados en el sistema.");
+            System.err.println("No hay usuarios cargados en el sistema.");
+            return false;
         }
         String contraUsuario = usuarios.get(nombreUsuario);
         if (contraUsuario == contrasenia){
             System.out.println("Logueo exitoso");
+            return true;
         } else {
-            throw new RuntimeException("Usuario o contraseña incorrectos.");
+            System.err.println("Usuario o contraseña incorrectos.");
+            return false;
         }
     }
 
-    /**
-     * @param nombreUsuario 
-     * @param contrasenia
-     */
-    public void registro(String nombreUsuario, String contrasenia) {
+    public Boolean registro(String nombreUsuario, String contrasenia) {
         if (usuarios.containsKey(nombreUsuario)){
-            throw new RuntimeException("Usuario ya registrado.");
+            System.err.println("Usuario ya registrado.");
+            return false;
         }
         usuarios.put(nombreUsuario,contrasenia);
+        System.out.println("Registro exitoso");
+        return true;
 
     }
 

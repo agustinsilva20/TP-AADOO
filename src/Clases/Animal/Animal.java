@@ -2,7 +2,9 @@ package Clases.Animal;
 import java.util.*;
 
 import Clases.Exportador.*;
+import Clases.Alarma.Alarma;
 import Clases.Cliente.Cliente;
+import Clases.Control.Control;
 import Clases.FichaTecnica.FichaTecnica;
 import Clases.Notificador.Notificador;
 import Clases.SeguimientoAdopcion.SeguimientoAdopcion;
@@ -22,6 +24,7 @@ public class Animal {
         this.id=id;
         this.salvaje = salvaje;
         this.seguimiento_adopcion= null;
+        this.alarmas = new ArrayList<Alarma>();
     }
     private TratamientoMedico tratamientoMedicoActual;
     private FichaTecnica fichaTecnica;
@@ -29,6 +32,7 @@ public class Animal {
     private int id;
     private Boolean salvaje;
     private SeguimientoAdopcion seguimiento_adopcion;
+    private List<Alarma> alarmas;
     
     public void asignarTratamiento(TratamientoMedico tratamiento){
         this.tratamientoMedicoActual = tratamiento;
@@ -66,6 +70,11 @@ public class Animal {
     
     public void cambiar_exportador(Exportador exportador) {
     	this.fichaTecnica.cambiarEstrategia(exportador);
+    }
+
+    public void agregar_alarma(TratamientoMedico tratamientoMedico, List<Control> acciones, int periodicidad){
+        Alarma alarma = new Alarma(this, tratamientoMedico, acciones, periodicidad);
+        alarmas.add(alarma);
     }
 
 }

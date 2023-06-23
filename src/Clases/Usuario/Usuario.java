@@ -28,12 +28,11 @@ public class Usuario implements Autentificador {
     private String contrasenia;
 
     private Autentificador autenticador;
-
-    public void login(String nombreUsuario, String contrasenia) {
-        autenticador.login(nombreUsuario,contrasenia);
+    public Boolean login(String nombreUsuario, String contrasenia) {
+        return autenticador.login(nombreUsuario,contrasenia);
     }
-    public void registro(String nombreUsuario, String contrasenia) {
-        autenticador.registro(nombreUsuario,contrasenia);
+    public Boolean registro(String nombreUsuario, String contrasenia) {
+        return autenticador.registro(nombreUsuario,contrasenia);
     }
     
 

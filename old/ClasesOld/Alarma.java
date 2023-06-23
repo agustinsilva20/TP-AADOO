@@ -10,7 +10,14 @@ public class Alarma {
 	private List<Control> acciones;
 	public TratamientoMedico tratamientoMedico;
 	public Animal animal;
-	public Alarma() {
+	public Alarma(Animal animal, TratamientoMedico tratamientoMedico, List<Control> acciones, int periodicidad) {
+		this.animal = animal;
+		this.tratamientoMedico = tratamientoMedico;
+		this.acciones = acciones;
+		this.ultimaEjecucion = null;
+		this.periodicidad =periodicidad;
+
+
 	}
 	public void notificarAVeterinarios(List<Usuario> veterinarios) {
 		// TODO implement here
