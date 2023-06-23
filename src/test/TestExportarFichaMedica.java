@@ -7,6 +7,8 @@ import Clases.Exportador.ExportarPDF;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,7 +44,7 @@ public class TestExportarFichaMedica {
 	
 	public void cargarDatosAnimal() {
 		
-		animal = new Animal (2, 0.3, 10.0, 2, true, new ExportarPDF(),false);
+		animal = new Animal (2, 0.3, 10.0, 2, true, new ExportarPDF(),false, new ArrayList<>());
 		
 	}
 }

@@ -17,7 +17,7 @@ import Clases.Usuario.Usuario;
 public class Animal {
 
 
-    public Animal(int id,Double altura, Double peso, int edad, Boolean buenEstadoDeSalud, Exportador exportador, Boolean salvaje ) {
+    public Animal(int id,Double altura, Double peso, int edad, Boolean buenEstadoDeSalud, Exportador exportador, Boolean salvaje, List<Usuario> veterinarios ) {
         this.fichaTecnica = new FichaTecnica(this, altura, peso, edad, buenEstadoDeSalud, exportador, salvaje);
         this.enTratamiento = false;
         this.tratamientoMedicoActual = null; //averiguar
@@ -25,6 +25,7 @@ public class Animal {
         this.salvaje = salvaje;
         this.seguimiento_adopcion= null;
         this.alarmas = new ArrayList<Alarma>();
+        this.veterinarios = veterinarios;
     }
     private TratamientoMedico tratamientoMedicoActual;
     private FichaTecnica fichaTecnica;
@@ -33,6 +34,7 @@ public class Animal {
     private Boolean salvaje;
     private SeguimientoAdopcion seguimiento_adopcion;
     private List<Alarma> alarmas;
+    private List<Usuario> veterinarios;
     
     public void asignarTratamiento(TratamientoMedico tratamiento){
         this.tratamientoMedicoActual = tratamiento;
@@ -72,8 +74,8 @@ public class Animal {
     	this.fichaTecnica.cambiarEstrategia(exportador);
     }
 
-    public void agregar_alarma(TratamientoMedico tratamientoMedico, List<Control> acciones, int periodicidad){
-        Alarma alarma = new Alarma(this, tratamientoMedico, acciones, periodicidad);
+    public void agregar_alarma(List<Control> acciones, int periodicidad){
+        Alarma alarma = new Alarma(this, tratamientoMedicoActual, acciones, periodicidad, veterinarios);
         alarmas.add(alarma);
     }
 

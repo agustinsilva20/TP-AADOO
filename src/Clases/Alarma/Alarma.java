@@ -15,17 +15,19 @@ public class Alarma {
 	private List<Control> acciones;
 	public TratamientoMedico tratamientoMedico;
 	public Animal animal;
-	public Alarma(Animal animal, TratamientoMedico tratamientoMedico, List<Control> acciones, int periodicidad) {
+	public Alarma(Animal animal, TratamientoMedico tratamientoMedico, List<Control> acciones, int periodicidad, List<Usuario> veterinarios) {
 		this.animal = animal;
 		this.tratamientoMedico = tratamientoMedico;
 		this.acciones = acciones;
 		this.ultimaEjecucion = null;
 		this.periodicidad =periodicidad;
 
-
+		notificarAVeterinarios(veterinarios, "Accion requerida");
 	}
-	public void notificarAVeterinarios(List<Usuario> veterinarios) {
-		// TODO implement here
+	public void notificarAVeterinarios(List<Usuario> veterinarios, String mensaje) {
+		for (Usuario vet: veterinarios){
+			vet.notificar(mensaje);
+		}
 	}
 	public void notificar(String mensaje) {
 		// TODO implement here

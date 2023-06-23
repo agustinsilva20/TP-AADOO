@@ -9,10 +9,14 @@ import Clases.Cliente.TipoAnimalDomestico;
 import Clases.Exportador.ExportarPDF;
 import Clases.Notificador.Notificador;
 import Clases.Notificador.NotificadorSMS;
+import Clases.Notificador.NotificadorWhatsapp;
 import Clases.Usuario.TipoUsuario;
 import Clases.Usuario.Usuario;
 
 import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,6 +26,7 @@ public class TestSeguimientoAdopcion {
 	static Cliente cliente;
 	static Usuario usuario_seguimiento;
 	static Notificador notificador;
+	static List<Usuario> veterinarios;
 	
 	@Before
 	public void setUp() throws Exception{
@@ -42,7 +47,9 @@ public class TestSeguimientoAdopcion {
 
 	public void cargarDatosCliente()  {
 		cliente = new Cliente("Agustin", "Silva", EstadoCivil.SOLTERO, "agustinsilvab@hotmail.com", 1156223610, Ocupacion.ESTUDIANTE, TipoAnimalDomestico.GATO, false);
-		usuario_seguimiento = new Usuario("Juan", "Gomez", "juangomez@puppies.com", 1155532123, "Juan", TipoUsuario.VISITADOR, "12345678");
+		usuario_seguimiento = new Usuario("Juan", "Gomez", "juangomez@puppies.com", 1155532123, "Juan", TipoUsuario.VISITADOR, "12345678", new NotificadorWhatsapp());
+		veterinarios = new ArrayList<Usuario>();
+        veterinarios.add(usuario_seguimiento);
 		notificador = new NotificadorSMS();
 	}
 	
@@ -50,7 +57,7 @@ public class TestSeguimientoAdopcion {
 	public void cargarDatosAnimales() {
 		
 		// Animal no salvaje sano
-		animal2 = new Animal (2, 0.3, 10.0, 2, true, new ExportarPDF(),false);
+		animal2 = new Animal (2, 0.3, 10.0, 2, true, new ExportarPDF(),false, veterinarios);
 		
 	}
 }
