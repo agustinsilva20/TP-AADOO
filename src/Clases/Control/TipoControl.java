@@ -1,4 +1,4 @@
-package Clases;
+package Clases.Control;
 public enum TipoControl {
     CONTROL_DE_PARASITOS,
     COLOCAR_ANTIPARACITARIO,

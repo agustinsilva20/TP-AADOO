@@ -1,7 +1,7 @@
 package Clases.Usuario;
 
-import Clases.Autentificador;
-import Clases.ModuloAutenticacionAdapter;
+import Clases.Autenticador.Autentificador;
+import Clases.Autenticador.ModuloAutenticacionAdapter;
 
 public class Usuario implements Autentificador {
 

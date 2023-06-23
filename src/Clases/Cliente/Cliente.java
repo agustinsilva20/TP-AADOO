@@ -1,8 +1,8 @@
 package Clases.Cliente;
 import java.util.*;
 
-import Clases.Notificador;
 import Clases.Animal.Animal;
+import Clases.Notificador.Notificador;
 import Clases.Usuario.Usuario;
 
 public class Cliente {

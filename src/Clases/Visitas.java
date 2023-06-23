@@ -2,6 +2,7 @@ package Clases;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import Clases.Encuesta.Encuesta;
 import Clases.Usuario.Usuario;
 
 public class Visitas {

@@ -3,6 +3,9 @@ import java.util.*;
 
 import Clases.Animal.Animal;
 import Clases.Cliente.Cliente;
+import Clases.Encuesta.Encuesta;
+import Clases.Encuesta.Estado;
+import Clases.Notificador.Notificador;
 import Clases.Usuario.Usuario;
 
 

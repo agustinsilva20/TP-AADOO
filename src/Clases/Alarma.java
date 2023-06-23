@@ -4,6 +4,7 @@ import java.time.LocalTime;
 import java.util.*;
 
 import Clases.Animal.Animal;
+import Clases.Control.Control;
 import Clases.Usuario.Usuario;
 
 public class Alarma {

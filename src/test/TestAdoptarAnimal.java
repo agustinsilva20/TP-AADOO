@@ -7,6 +7,8 @@ import Clases.Cliente.EstadoCivil;
 import Clases.Cliente.Ocupacion;
 import Clases.Cliente.TipoAnimalDomestico;
 import Clases.Exportador.ExportarPDF;
+import Clases.Notificador.Notificador;
+import Clases.Notificador.NotificadorSMS;
 import Clases.Usuario.TipoUsuario;
 import Clases.Usuario.Usuario;
 

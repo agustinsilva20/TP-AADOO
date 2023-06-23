@@ -1,4 +1,4 @@
-package Clases;
+package Clases.Encuesta;
 import java.util.*;
 
 /**

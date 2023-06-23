@@ -1,4 +1,4 @@
-package Clases;
+package Clases.Autenticador;
 import java.util.*;
 
 /**
