@@ -17,7 +17,7 @@ import Clases.Usuario.Usuario;
 public class Animal {
 
 
-    public Animal(int id,Double altura, Double peso, int edad, Boolean buenEstadoDeSalud, Exportador exportador, Boolean salvaje, List<Usuario> veterinarios ) {
+    public Animal(int id,Double altura, Double peso, int edad, Boolean buenEstadoDeSalud, IEstrategiaExportador exportador, Boolean salvaje, List<Usuario> veterinarios ) {
         this.fichaTecnica = new FichaTecnica(this, altura, peso, edad, buenEstadoDeSalud, exportador, salvaje);
         this.enTratamiento = false;
         this.tratamientoMedicoActual = null; //averiguar
@@ -67,10 +67,10 @@ public class Animal {
     }
     
     public String exportFicha() {
-    	return this.fichaTecnica.exportar();
+    	return this.fichaTecnica.exportar(this.fichaTecnica);
     }
     
-    public void cambiar_exportador(Exportador exportador) {
+    public void cambiar_exportador(IEstrategiaExportador exportador) {
     	this.fichaTecnica.cambiarEstrategia(exportador);
     }
 

@@ -10,9 +10,9 @@ import Clases.TratamientoMedico.TratamientoMedico;
 /**
  * 
  */
-public class FichaTecnica implements Exportador {
+public class FichaTecnica implements IEstrategiaExportador {
 
-    public FichaTecnica(Animal animal, Double altura, Double peso, int edad, Boolean buenEstadoSalud, Exportador exportador, Boolean salvaje) {
+    public FichaTecnica(Animal animal, Double altura, Double peso, int edad, Boolean buenEstadoSalud, IEstrategiaExportador exportador, Boolean salvaje) {
         this.animal = animal;
         this.altura = altura;
         this.peso = peso;
@@ -34,16 +34,16 @@ public class FichaTecnica implements Exportador {
     private List<Control> historialControles;
     private List<TratamientoMedico> historialTratamientos;
     private List<Visitas> historialVisitas;
-    private Exportador estrategiaExportador;
+    private IEstrategiaExportador estrategiaExportador;
     private Boolean salvaje;
 
-    public void cambiarEstrategia(Exportador exportador) {
+    public void cambiarEstrategia(IEstrategiaExportador exportador) {
         this.estrategiaExportador = exportador;
     }
 
 
-    public String exportar() {
-        return this.estrategiaExportador.exportar();
+    public String exportar(FichaTecnica fichaTecnica) {
+        return this.estrategiaExportador.exportar(fichaTecnica);
     }
 
 }

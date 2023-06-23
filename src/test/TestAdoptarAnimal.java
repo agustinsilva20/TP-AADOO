@@ -79,8 +79,10 @@ public class TestAdoptarAnimal {
 		cliente.agregarMascotaAdoptada(animal4, usuario_seguimiento,notificador);
 		cliente.agregarMascotaAdoptada(animal5, usuario_seguimiento,notificador);
 		int cant_mascotas = cliente.getCantidadMascotas();
+		System.out.println(cant_mascotas);
 		Boolean cumpleOjetivo = cant_mascotas == 2;
-		assertTrue("El resultado no es el esperado", cumpleOjetivo.equals(Boolean.TRUE));
+		System.out.println(cumpleOjetivo);
+		assertTrue("El resultado no es el esperado", cumpleOjetivo.equals(true));
 	}
 	
 	public void cargarDatosCliente()  {
@@ -97,7 +99,7 @@ public class TestAdoptarAnimal {
 		animal2 = new Animal (2, 0.3, 10.0, 2, true, new ExportarPDF(),false,new ArrayList<>());
 		// Animal no salvaje no sano
 		animal3 = new Animal (3, 0.3, 10.0, 2, false, new ExportarPDF(),false,new ArrayList<>());
-		animal3.setEnTratamiento(true);
+		//animal3.setEnTratamiento(true);
 		// Animal no salvaje sano
 		animal4 = new Animal (4, 0.3, 10.0, 2, true, new ExportarPDF(),false,new ArrayList<>());
 		// Animal no salvaje sano
