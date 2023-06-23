@@ -1,12 +1,21 @@
 package Clases.Notificador;
-import java.util.*;
 
-/**
- * 
- */
-public interface Notificador {
+import Clases.Cliente.Cliente;
 
+public class Notificador {
+    private EstrategiaNotificacion estrategiaNotificacion;
 
-    String notificar(String mensaje);
+    public Notificador( EstrategiaNotificacion estrategiaNotificacion) {
 
+        this.estrategiaNotificacion = estrategiaNotificacion;
+    }
+
+    public String notificar(String mensaje) {
+        String s = estrategiaNotificacion.notificar(mensaje);
+        return s;
+    }
+
+    public void cambiarEstrategia(EstrategiaNotificacion nuevaEstrategia) {
+        this.estrategiaNotificacion = nuevaEstrategia;
+    }
 }

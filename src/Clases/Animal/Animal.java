@@ -6,7 +6,7 @@ import Clases.Alarma.Alarma;
 import Clases.Cliente.Cliente;
 import Clases.Control.Control;
 import Clases.FichaTecnica.FichaTecnica;
-import Clases.Notificador.Notificador;
+import Clases.Notificador.EstrategiaNotificacion;
 import Clases.SeguimientoAdopcion.SeguimientoAdopcion;
 import Clases.TratamientoMedico.TratamientoMedico;
 import Clases.Usuario.Usuario;
@@ -49,8 +49,8 @@ public class Animal {
         this.enTratamiento = estado;
     }
     
-    public void setSeguimiento(Cliente cliente, Usuario seguimiento, Notificador notificador) {
-    	this.seguimiento_adopcion = new SeguimientoAdopcion(cliente, seguimiento, notificador);
+    public void setSeguimiento(Cliente cliente, Usuario seguimiento, EstrategiaNotificacion estrategiaNotificacion) {
+    	this.seguimiento_adopcion = new SeguimientoAdopcion(cliente, seguimiento, estrategiaNotificacion);
     }
 
     public Boolean enTratamiento() {
@@ -63,7 +63,7 @@ public class Animal {
     }
     
     public String send_notificacion_visita() {
-    	return seguimiento_adopcion.notificar("Se aproxima una visita veterinaria");
+    	return seguimiento_adopcion.enviarRecordatorio("Se aproxima una visita veterinaria");
     }
     
     public String exportFicha() {

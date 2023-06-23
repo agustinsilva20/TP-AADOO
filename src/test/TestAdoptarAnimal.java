@@ -1,13 +1,12 @@
 package test;
 
-import Clases.*;
 import Clases.Animal.Animal;
 import Clases.Cliente.Cliente;
 import Clases.Cliente.EstadoCivil;
 import Clases.Cliente.Ocupacion;
 import Clases.Cliente.TipoAnimalDomestico;
 import Clases.Exportador.ExportarPDF;
-import Clases.Notificador.Notificador;
+import Clases.Notificador.EstrategiaNotificacion;
 import Clases.Notificador.NotificadorSMS;
 import Clases.Notificador.NotificadorWhatsapp;
 import Clases.Usuario.TipoUsuario;
@@ -30,7 +29,7 @@ public class TestAdoptarAnimal {
 	
 	static Cliente cliente;
 	static Usuario usuario_seguimiento;
-	static Notificador notificador;
+	static EstrategiaNotificacion estrategiaNotificacion;
 	
 	@Before
 	public void setUp() throws Exception{
@@ -43,7 +42,7 @@ public class TestAdoptarAnimal {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Adoptar un Animal No salvaje Sano");
-		cliente.agregarMascotaAdoptada(animal2, usuario_seguimiento,notificador);
+		cliente.agregarMascotaAdoptada(animal2, usuario_seguimiento, estrategiaNotificacion);
 		int cant_mascotas = cliente.getCantidadMascotas();
 		Boolean cumpleOjetivo = cant_mascotas == 1;
 		assertTrue("El resultado no es el esperado", cumpleOjetivo.equals(Boolean.TRUE));
@@ -53,7 +52,7 @@ public class TestAdoptarAnimal {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Adoptar un Animal salvaje Sano");
-		cliente.agregarMascotaAdoptada(animal1, usuario_seguimiento,notificador);
+		cliente.agregarMascotaAdoptada(animal1, usuario_seguimiento, estrategiaNotificacion);
 		int cant_mascotas = cliente.getCantidadMascotas();
 		Boolean cumpleOjetivo = cant_mascotas == 0;
 		assertTrue("El resultado no es el esperado", cumpleOjetivo.equals(Boolean.TRUE));
@@ -64,8 +63,9 @@ public class TestAdoptarAnimal {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Adoptar un Animal no Sano");
-		cliente.agregarMascotaAdoptada(animal3, usuario_seguimiento,notificador);
+		cliente.agregarMascotaAdoptada(animal3, usuario_seguimiento, estrategiaNotificacion);
 		int cant_mascotas = cliente.getCantidadMascotas();
+		System.out.println(cant_mascotas);
 		Boolean cumpleOjetivo = cant_mascotas == 0;
 		assertTrue("El resultado no es el esperado", cumpleOjetivo.equals(Boolean.TRUE));
 	}
@@ -75,9 +75,9 @@ public class TestAdoptarAnimal {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Adoptar 3 animales");
-		cliente.agregarMascotaAdoptada(animal2, usuario_seguimiento,notificador);
-		cliente.agregarMascotaAdoptada(animal4, usuario_seguimiento,notificador);
-		cliente.agregarMascotaAdoptada(animal5, usuario_seguimiento,notificador);
+		cliente.agregarMascotaAdoptada(animal2, usuario_seguimiento, estrategiaNotificacion);
+		cliente.agregarMascotaAdoptada(animal4, usuario_seguimiento, estrategiaNotificacion);
+		cliente.agregarMascotaAdoptada(animal5, usuario_seguimiento, estrategiaNotificacion);
 		int cant_mascotas = cliente.getCantidadMascotas();
 		System.out.println(cant_mascotas);
 		Boolean cumpleOjetivo = cant_mascotas == 2;
@@ -88,7 +88,7 @@ public class TestAdoptarAnimal {
 	public void cargarDatosCliente()  {
 		cliente = new Cliente("Agustin", "Silva", EstadoCivil.SOLTERO, "agustinsilvab@hotmail.com", 1156223610, Ocupacion.ESTUDIANTE, TipoAnimalDomestico.GATO, false);
 		usuario_seguimiento = new Usuario("Juan", "Gomez", "juangomez@puppies.com", 1155532123, "Juan", TipoUsuario.VISITADOR, "12345678", new NotificadorWhatsapp());
-		notificador = new NotificadorSMS();
+		estrategiaNotificacion = new NotificadorSMS();
 	}
 	
 	

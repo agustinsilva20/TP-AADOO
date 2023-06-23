@@ -1,14 +1,15 @@
 package Clases.Notificador;
-import java.util.*;
 
-public class NotificadorEmail implements Notificador {
+public class NotificadorEmail implements EstrategiaNotificacion {
 
+    private AdapterNotificarEmail adapter = new AdapterEmail();
 
     public NotificadorEmail() {
     }
 
     public String notificar(String mensaje) {
-        return "Email enviado.";
+        String s = adapter.notificarEmail(mensaje);
+        return s;
     }
 
 }

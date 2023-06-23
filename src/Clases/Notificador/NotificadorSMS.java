@@ -1,18 +1,19 @@
 package Clases.Notificador;
-import java.util.*;
 
 /**
  * 
  */
-public class NotificadorSMS implements Notificador {
+public class NotificadorSMS implements EstrategiaNotificacion {
 
+    private AdapterNotificarSMS adapter = new AdapterSMS();
 
     public NotificadorSMS() {
     }
 
   
     public String notificar(String mensaje) {
-        return "SMS enviado.";
+        String s = adapter.notificarSMS(mensaje);
+        return s;
     }
 
 }

@@ -7,12 +7,12 @@ import Clases.Animal.Animal;
 import Clases.Autenticador.Autentificador;
 import Clases.Autenticador.ModuloAutenticacionAdapter;
 import Clases.Control.Control;
-import Clases.Notificador.Notificador;
+import Clases.Notificador.EstrategiaNotificacion;
 import Clases.TratamientoMedico.TratamientoMedico;
 
 public class Usuario implements Autentificador {
 
-    public Usuario(String nombre, String apellido, String email, int telefono, String nombreUser, Enum<TipoUsuario> tipoUsuario, String contrasenia, Notificador notificador) {
+    public Usuario(String nombre, String apellido, String email, int telefono, String nombreUser, Enum<TipoUsuario> tipoUsuario, String contrasenia, EstrategiaNotificacion estrategiaNotificacion) {
     this.nombre = nombre;
     this.apellido = apellido;
     this.email = email;
@@ -21,7 +21,7 @@ public class Usuario implements Autentificador {
     this.tipoUsuario = tipoUsuario;
     this.contrasenia = contrasenia;
     this.autenticador = new ModuloAutenticacionAdapter();
-    this.notificador = notificador;
+    this.estrategiaNotificacion = estrategiaNotificacion;
     this.registro(nombreUsuario, contrasenia);
     this.notificaciones = new ArrayList<>();
     
@@ -34,7 +34,7 @@ public class Usuario implements Autentificador {
     private String nombreUsuario;
     private Enum<TipoUsuario> tipoUsuario;
     private String contrasenia;
-    private Notificador notificador;
+    private EstrategiaNotificacion estrategiaNotificacion;
     private List<String> notificaciones;
 
     private Autentificador autenticador;
@@ -54,7 +54,7 @@ public class Usuario implements Autentificador {
     }
 
     public void notificar(String mensaje){
-        this.notificaciones.add(this.notificador.notificar(mensaje));
+        this.notificaciones.add(this.estrategiaNotificacion.notificar(mensaje));
     }
 
     public List<String> getNotificaciones(){

@@ -1,14 +1,16 @@
 package Clases.Notificador;
-import java.util.*;
 
 
-public class NotificadorWhatsapp implements Notificador {
+public class NotificadorWhatsapp implements EstrategiaNotificacion {
+
+    private AdapterNotificarWPP adapter = new AdapterWpp();
 
     public NotificadorWhatsapp() {
     }
 
     public String notificar(String mensaje) {
-        return "WhatsApp enviado.";
+        String s = adapter.notificarWpp(mensaje);
+        return s;
     }
 
 }

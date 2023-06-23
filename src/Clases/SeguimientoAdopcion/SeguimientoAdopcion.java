@@ -1,29 +1,25 @@
 package Clases.SeguimientoAdopcion;
-import java.util.*;
 
 import Clases.Animal.Animal;
 import Clases.Cadencia.Cadencia;
 import Clases.Cliente.Cliente;
 import Clases.Encuesta.Encuesta;
 import Clases.Encuesta.Estado;
+import Clases.Notificador.EstrategiaNotificacion;
 import Clases.Notificador.Notificador;
 import Clases.Usuario.Usuario;
 
 
-public class SeguimientoAdopcion implements Notificador {
+public class SeguimientoAdopcion {
 
 
-    public SeguimientoAdopcion(Cliente cliente, Usuario seguimiento, Notificador notificador) {
+    public SeguimientoAdopcion(Cliente cliente, Usuario seguimiento,EstrategiaNotificacion estrategiaNotificacion) {
         this.cliente = cliente;
         this.responsableSeguimiento = seguimiento;
         this.cadencia = new Cadencia();
         this.requiereVisita = true;
-        this.notificador = notificador;
-
-
-
+        this.notificador = new Notificador(estrategiaNotificacion);
     }
-
 
     private Cliente cliente;
     private Usuario responsableSeguimiento;
@@ -31,6 +27,7 @@ public class SeguimientoAdopcion implements Notificador {
     private Boolean requiereVisita;
     private Animal mascotaAdoptada;
     private Notificador notificador;
+
 
     public Cliente getCliente(){
         return cliente;
@@ -55,12 +52,11 @@ public class SeguimientoAdopcion implements Notificador {
         return encuesta;
     }
 
-    public void cambiarPreferencia(Notificador notificador) {
-        this.notificador = notificador;
+    public void cambiarPreferencia(EstrategiaNotificacion estrategiaNotificacion) {
+        this.notificador.cambiarEstrategia(estrategiaNotificacion);
     }
 
-    @Override
-    public String notificar(String mensaje) {
+    public String enviarRecordatorio(String mensaje) {
         return this.notificador.notificar(mensaje);
     }
 }

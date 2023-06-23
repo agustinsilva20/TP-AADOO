@@ -29,6 +29,7 @@ public class TestExportarFichaMedica {
 		System.out.println("Inicio - Exportar ficha PDF");
 		
 		String exportado = animal.exportFicha();
+		System.out.println(exportado);
 		assertTrue("El resultado no es el esperado", exportado.equals("Exportando PDF..."));
 	}
 	
@@ -39,6 +40,7 @@ public class TestExportarFichaMedica {
 		System.out.println("Inicio - Exportar ficha PDF");
 		animal.cambiar_exportador(new ExportarExcel());
 		String exportado = animal.exportFicha();
+		System.out.println(exportado);
 		assertTrue("El resultado no es el esperado", exportado.equals("Exportando Excel..."));
 	}
 	

@@ -2,7 +2,7 @@ package Clases.Cliente;
 import java.util.*;
 
 import Clases.Animal.Animal;
-import Clases.Notificador.Notificador;
+import Clases.Notificador.EstrategiaNotificacion;
 import Clases.Usuario.Usuario;
 
 public class Cliente {
@@ -34,7 +34,8 @@ public class Cliente {
     	return mascotasAdoptadas.size();
     }
 
-    public void agregarMascotaAdoptada(Animal mascota, Usuario usuario_seguimiento, Notificador notificador){
+
+    public void agregarMascotaAdoptada(Animal mascota, Usuario usuario_seguimiento, EstrategiaNotificacion estrategiaNotificacion){
     	if (mascota.getSalvaje() == true) {
     		return ;
     	}
@@ -45,8 +46,9 @@ public class Cliente {
     		return ;
     	}
         mascotasAdoptadas.add(mascota);
-        mascota.setSeguimiento(this, usuario_seguimiento, notificador);
+        mascota.setSeguimiento(this, usuario_seguimiento, estrategiaNotificacion);
         tieneMascotas=true;
     }
+
 
 }

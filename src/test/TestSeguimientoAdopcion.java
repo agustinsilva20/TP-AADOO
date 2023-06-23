@@ -1,13 +1,12 @@
 package test;
 
-import Clases.*;
 import Clases.Animal.Animal;
 import Clases.Cliente.Cliente;
 import Clases.Cliente.EstadoCivil;
 import Clases.Cliente.Ocupacion;
 import Clases.Cliente.TipoAnimalDomestico;
 import Clases.Exportador.ExportarPDF;
-import Clases.Notificador.Notificador;
+import Clases.Notificador.EstrategiaNotificacion;
 import Clases.Notificador.NotificadorSMS;
 import Clases.Notificador.NotificadorWhatsapp;
 import Clases.Usuario.TipoUsuario;
@@ -25,7 +24,7 @@ public class TestSeguimientoAdopcion {
 	static Animal animal2;
 	static Cliente cliente;
 	static Usuario usuario_seguimiento;
-	static Notificador notificador;
+	static EstrategiaNotificacion estrategiaNotificacion;
 	static List<Usuario> veterinarios;
 	
 	@Before
@@ -39,9 +38,10 @@ public class TestSeguimientoAdopcion {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Configurar seguimiento y enviar notificacion SMS");
-		cliente.agregarMascotaAdoptada(animal2, usuario_seguimiento,notificador);
-		String notificacion = animal2.send_notificacion_visita();
-		assertTrue("El resultado no es el esperado", notificacion.equals("SMS enviado."));
+		cliente.agregarMascotaAdoptada(animal2, usuario_seguimiento, estrategiaNotificacion);
+		String confirmacion = animal2.send_notificacion_visita();
+		System.out.println(confirmacion);
+		assertTrue("El resultado no es el esperado", confirmacion.equals("SMS enviado."));
 	}
 	
 
@@ -49,8 +49,8 @@ public class TestSeguimientoAdopcion {
 		cliente = new Cliente("Agustin", "Silva", EstadoCivil.SOLTERO, "agustinsilvab@hotmail.com", 1156223610, Ocupacion.ESTUDIANTE, TipoAnimalDomestico.GATO, false);
 		usuario_seguimiento = new Usuario("Juan", "Gomez", "juangomez@puppies.com", 1155532123, "Juan", TipoUsuario.VISITADOR, "12345678", new NotificadorWhatsapp());
 		veterinarios = new ArrayList<Usuario>();
-        veterinarios.add(usuario_seguimiento);
-		notificador = new NotificadorSMS();
+		veterinarios.add(usuario_seguimiento);
+		estrategiaNotificacion = new NotificadorSMS();
 	}
 	
 	
