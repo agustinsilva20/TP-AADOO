@@ -99,7 +99,7 @@ public class TestAdoptarAnimal {
 		animal2 = new Animal (0.3, 10.0, 2, true, new ExportarPDF(),false,new ArrayList<>());
 		// Animal no salvaje no sano
 		animal3 = new Animal (0.3, 10.0, 2, false, new ExportarPDF(),false,new ArrayList<>());
-		//animal3.setEnTratamiento(true);
+		animal3.setEnTratamiento(true);
 		// Animal no salvaje sano
 		animal4 = new Animal (0.3, 10.0, 2, true, new ExportarPDF(),false,new ArrayList<>());
 		// Animal no salvaje sano
