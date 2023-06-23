@@ -1,6 +1,14 @@
 package test;
 
 import Clases.*;
+import Clases.Animal.Animal;
+import Clases.Cliente.Cliente;
+import Clases.Cliente.EstadoCivil;
+import Clases.Cliente.Ocupacion;
+import Clases.Cliente.TipoAnimalDomestico;
+import Clases.Exportador.ExportarPDF;
+import Clases.Usuario.TipoUsuario;
+import Clases.Usuario.Usuario;
 
 import static org.junit.Assert.assertTrue;
 

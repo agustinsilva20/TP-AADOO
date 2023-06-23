@@ -1,6 +1,9 @@
 package test;
 
 import Clases.*;
+import Clases.Animal.Animal;
+import Clases.Exportador.ExportarExcel;
+import Clases.Exportador.ExportarPDF;
 
 import static org.junit.Assert.assertTrue;
 

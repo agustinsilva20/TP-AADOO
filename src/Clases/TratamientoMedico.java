@@ -1,6 +1,8 @@
 package Clases;
 import java.util.*;
 
+import Clases.Usuario.Usuario;
+
 public class TratamientoMedico {
 
     public TratamientoMedico(Usuario veterinario, String descripcion) {

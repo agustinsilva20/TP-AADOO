@@ -1,6 +1,10 @@
 package Clases;
 import java.util.*;
 
+import Clases.Animal.Animal;
+import Clases.Cliente.Cliente;
+import Clases.Usuario.Usuario;
+
 
 public class SeguimientoAdopcion implements Notificador {
 

@@ -3,6 +3,12 @@ import java.util.List;
 import java.util.ArrayList;
 
 import Clases.*;
+import Clases.Cliente.Cliente;
+import Clases.Cliente.EstadoCivil;
+import Clases.Cliente.Ocupacion;
+import Clases.Cliente.TipoAnimalDomestico;
+import Clases.Usuario.TipoUsuario;
+import Clases.Usuario.Usuario;
 
 public class ControladorVeterinaria {
 	private List<Usuario> usuarios;
