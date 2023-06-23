@@ -1,7 +1,8 @@
-package Clases;
+package Clases.SeguimientoAdopcion;
 import java.util.*;
 
 import Clases.Animal.Animal;
+import Clases.Cadencia.Cadencia;
 import Clases.Cliente.Cliente;
 import Clases.Encuesta.Encuesta;
 import Clases.Encuesta.Estado;

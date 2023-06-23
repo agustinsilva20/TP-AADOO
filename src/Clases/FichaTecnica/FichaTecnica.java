@@ -1,11 +1,11 @@
 package Clases.FichaTecnica;
 import java.util.*;
 
-import Clases.TratamientoMedico;
 import Clases.Visitas;
 import Clases.Animal.Animal;
 import Clases.Control.Control;
 import Clases.Exportador.*;
+import Clases.TratamientoMedico.TratamientoMedico;
 
 /**
  * 

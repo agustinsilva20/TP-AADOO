@@ -2,11 +2,11 @@ package Clases.Animal;
 import java.util.*;
 
 import Clases.Exportador.*;
-import Clases.SeguimientoAdopcion;
-import Clases.TratamientoMedico;
 import Clases.Cliente.Cliente;
 import Clases.FichaTecnica.FichaTecnica;
 import Clases.Notificador.Notificador;
+import Clases.SeguimientoAdopcion.SeguimientoAdopcion;
+import Clases.TratamientoMedico.TratamientoMedico;
 import Clases.Usuario.Usuario;
 
 /**

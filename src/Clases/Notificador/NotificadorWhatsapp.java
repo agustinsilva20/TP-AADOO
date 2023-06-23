@@ -1,7 +1,5 @@
-package Clases;
+package Clases.Notificador;
 import java.util.*;
-
-import Clases.Notificador.Notificador;
 
 /**
  * 

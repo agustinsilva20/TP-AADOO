@@ -1,10 +1,11 @@
-package Clases;
+package Clases.Alarma;
 
 import java.time.LocalTime;
 import java.util.*;
 
 import Clases.Animal.Animal;
 import Clases.Control.Control;
+import Clases.TratamientoMedico.TratamientoMedico;
 import Clases.Usuario.Usuario;
 
 public class Alarma {
