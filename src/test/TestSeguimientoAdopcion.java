@@ -57,7 +57,7 @@ public class TestSeguimientoAdopcion {
 	public void cargarDatosAnimales() {
 		
 		// Animal no salvaje sano
-		animal2 = new Animal (2, 0.3, 10.0, 2, true, new ExportarPDF(),false, veterinarios);
+		animal2 = new Animal (0.3, 10.0, 2, true, new ExportarPDF(),false, veterinarios);
 		
 	}
 }

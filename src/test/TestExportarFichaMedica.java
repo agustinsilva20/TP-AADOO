@@ -27,7 +27,7 @@ public class TestExportarFichaMedica {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Exportar ficha PDF");
-		
+
 		String exportado = animal.exportFicha();
 		System.out.println(exportado);
 		assertTrue("El resultado no es el esperado", exportado.equals("Exportando PDF..."));
@@ -46,7 +46,7 @@ public class TestExportarFichaMedica {
 	
 	public void cargarDatosAnimal() {
 		
-		animal = new Animal (2, 0.3, 10.0, 2, true, new ExportarPDF(),false, new ArrayList<>());
+		animal = new Animal (0.3, 10.0, 2, true, new ExportarPDF(),false, new ArrayList<>());
 		
 	}
 }

@@ -94,16 +94,16 @@ public class TestAdoptarAnimal {
 	
 	public void cargarDatosAnimales() {
 		// Animal salvaje sano
-		animal1 = new Animal (1, 0.3, 10.0, 2, true, new ExportarPDF(),true,new ArrayList<>());
+		animal1 = new Animal (0.3, 10.0, 2, true, new ExportarPDF(),true,new ArrayList<>());
 		// Animal no salvaje sano
-		animal2 = new Animal (2, 0.3, 10.0, 2, true, new ExportarPDF(),false,new ArrayList<>());
+		animal2 = new Animal (0.3, 10.0, 2, true, new ExportarPDF(),false,new ArrayList<>());
 		// Animal no salvaje no sano
-		animal3 = new Animal (3, 0.3, 10.0, 2, false, new ExportarPDF(),false,new ArrayList<>());
+		animal3 = new Animal (0.3, 10.0, 2, false, new ExportarPDF(),false,new ArrayList<>());
 		//animal3.setEnTratamiento(true);
 		// Animal no salvaje sano
-		animal4 = new Animal (4, 0.3, 10.0, 2, true, new ExportarPDF(),false,new ArrayList<>());
+		animal4 = new Animal (0.3, 10.0, 2, true, new ExportarPDF(),false,new ArrayList<>());
 		// Animal no salvaje sano
-		animal5 = new Animal (5, 0.3, 10.0, 2, true, new ExportarPDF(),false,new ArrayList<>());
+		animal5 = new Animal (0.3, 10.0, 2, true, new ExportarPDF(),false,new ArrayList<>());
 		
 	}
 }

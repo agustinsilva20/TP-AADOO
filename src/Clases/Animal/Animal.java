@@ -17,11 +17,10 @@ import Clases.Usuario.Usuario;
 public class Animal {
 
 
-    public Animal(int id,Double altura, Double peso, int edad, Boolean buenEstadoDeSalud, IEstrategiaExportador exportador, Boolean salvaje, List<Usuario> veterinarios ) {
+    public Animal(Double altura, Double peso, int edad, Boolean buenEstadoDeSalud, IEstrategiaExportador exportador, Boolean salvaje, List<Usuario> veterinarios ) {
         this.fichaTecnica = new FichaTecnica(this, altura, peso, edad, buenEstadoDeSalud, exportador, salvaje);
         this.enTratamiento = false;
-        this.tratamientoMedicoActual = null; //averiguar
-        this.id=id;
+        this.tratamientoMedicoActual = null;
         this.salvaje = salvaje;
         this.seguimiento_adopcion= null;
         this.alarmas = new ArrayList<Alarma>();
@@ -30,7 +29,6 @@ public class Animal {
     private TratamientoMedico tratamientoMedicoActual;
     private FichaTecnica fichaTecnica;
     private Boolean enTratamiento;
-    private int id;
     private Boolean salvaje;
     private SeguimientoAdopcion seguimiento_adopcion;
     private List<Alarma> alarmas;

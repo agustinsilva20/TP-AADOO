@@ -88,7 +88,7 @@ public class TestAlarmasProgramadas {
 
     public void cargarAnimal(){
        
-        animal = new Animal (3, 0.3, 10.0, 2, false, new ExportarPDF(),false,veterinarios);
+        animal = new Animal (0.3, 10.0, 2, false, new ExportarPDF(),false,veterinarios);
     }
 
 }
