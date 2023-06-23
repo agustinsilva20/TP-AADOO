@@ -7,9 +7,7 @@ import Clases.Control.Control;
 import Clases.Exportador.*;
 import Clases.TratamientoMedico.TratamientoMedico;
 
-/**
- * 
- */
+
 public class FichaTecnica implements IEstrategiaExportador {
 
     public FichaTecnica(Animal animal, Double altura, Double peso, int edad, Boolean buenEstadoSalud, IEstrategiaExportador exportador, Boolean salvaje) {

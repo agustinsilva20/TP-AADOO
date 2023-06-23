@@ -1,7 +1,5 @@
 package Clases.Cliente;
-/**
- * 
- */
+
 public enum EstadoCivil {
     SOLTERO,
     CASADO,

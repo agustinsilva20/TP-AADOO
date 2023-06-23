@@ -5,6 +5,7 @@ import java.util.*;
 
 import Clases.Animal.Animal;
 import Clases.Control.Control;
+import Clases.Notificador.Notificador;
 import Clases.TratamientoMedico.TratamientoMedico;
 import Clases.Usuario.Usuario;
 
@@ -13,6 +14,7 @@ public class Alarma {
 	private Integer periodicidad;
 	private LocalTime ultimaEjecucion;
 	private List<Control> acciones;
+	private Notificador notificador;
 	public TratamientoMedico tratamientoMedico;
 	public Animal animal;
 	public Alarma(Animal animal, TratamientoMedico tratamientoMedico, List<Control> acciones, int periodicidad, List<Usuario> veterinarios) {
@@ -29,8 +31,13 @@ public class Alarma {
 			vet.notificar(mensaje);
 		}
 	}
+
+	public void setNotificador(Notificador notificador) {
+		this.notificador = notificador;
+	}
+
 	public void notificar(String mensaje) {
-		// TODO implement here
+		this.notificador.notificar(mensaje);
 	}
 
 }

@@ -23,4 +23,7 @@ public class Control {
         this.descripcionTarea = comentario;
     }
 
+    public void setDescripcionTarea(String descripcionTarea) {
+        this.descripcionTarea = descripcionTarea;
+    }
 }
