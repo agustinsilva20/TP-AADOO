@@ -1,4 +1,5 @@
-package Clases;
+package Clases.Encuesta;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -12,6 +13,9 @@ public class Visitas {
 
     private Usuario visitador;
 
-    public Visitas(){
+    public Visitas(Encuesta encuesta, LocalDateTime fecha, Usuario visitador) {
+        this.encuesta = encuesta;
+        this.fecha = fecha;
+        this.visitador = visitador;
     }
 }

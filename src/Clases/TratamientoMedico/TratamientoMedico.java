@@ -1,4 +1,5 @@
 package Clases.TratamientoMedico;
+
 import java.util.*;
 
 import Clases.Usuario.Usuario;

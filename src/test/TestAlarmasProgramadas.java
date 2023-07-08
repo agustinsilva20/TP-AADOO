@@ -1,4 +1,3 @@
-package test;
 
 import Clases.*;
 import Clases.Animal.Animal;

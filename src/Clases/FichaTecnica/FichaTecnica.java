@@ -1,7 +1,8 @@
 package Clases.FichaTecnica;
+
 import java.util.*;
 
-import Clases.Visitas;
+import Clases.Encuesta.Visitas;
 import Clases.Animal.Animal;
 import Clases.Control.Control;
 import Clases.Exportador.*;
