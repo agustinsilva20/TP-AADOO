@@ -6,7 +6,12 @@ import java.util.List;
 
 public class ControllerTratamientoMed {
     private static ControllerTratamientoMed instance;
-    private List<TratamientoMedico> TratamientosMedicos;
+    private static List<TratamientoMedico> TratamientosMedicos;
+
+    private List<TratamientoMedico> instanciarTratamientosMed() {
+        //Instanciar adopciones
+        return null;
+    }
 
     private ControllerTratamientoMed(){}
 

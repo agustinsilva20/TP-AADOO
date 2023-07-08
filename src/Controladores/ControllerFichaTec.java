@@ -7,7 +7,12 @@ import java.util.List;
 public class ControllerFichaTec {
 
     private static ControllerFichaTec instance;
-    private List<FichaTecnica> FichasTecnicas;
+    private static List<FichaTecnica> FichasTecnicas;
+
+    private List<FichaTecnica> instanciarFichasTec() {
+        //Instanciar adopciones
+        return null;
+    }
 
     private ControllerFichaTec(){}
 

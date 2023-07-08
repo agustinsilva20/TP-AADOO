@@ -7,7 +7,12 @@ import java.util.List;
 public class ControllerAnimal {
 
     private static ControllerAnimal instance;
-    private List<Animal> animales;
+    private static List<Animal> Animales;
+
+    private List<Animal> instanciarAnimales() {
+        //Instanciar adopciones
+        return null;
+    }
 
     private ControllerAnimal(){}
 

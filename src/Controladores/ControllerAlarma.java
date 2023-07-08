@@ -6,7 +6,12 @@ import java.util.List;
 
 public class ControllerAlarma {
     private static ControllerAlarma instance;
-    private List<Alarma> alarmas;
+    private static List<Alarma> alarmas;
+
+    private List<Alarma> instanciarAlarmas() {
+        //Instanciar adopciones
+        return null;
+    }
 
     private ControllerAlarma(){}
 

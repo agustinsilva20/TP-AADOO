@@ -7,7 +7,13 @@ import java.util.List;
 public class ControllerCliente {
 
     private static ControllerCliente instance;
-    private List<Cliente> clientes;
+    private static List<Cliente> clientes;
+
+    private List<Cliente> instanciarClientes() {
+        //Instanciar adopciones
+        return null;
+    }
+
 
     private ControllerCliente(){}
 
