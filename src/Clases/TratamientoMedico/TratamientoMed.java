@@ -1,12 +1,9 @@
 package Clases.TratamientoMedico;
 
-import java.util.*;
-
 import Clases.Usuario.Usuario;
 
-public class TratamientoMedico {
-
-    public TratamientoMedico(Usuario veterinario, String descripcion) {
+public class TratamientoMed {
+    public TratamientoMed(Usuario veterinario, String descripcion) {
         this.veterinario = veterinario;
         this.descripcion = descripcion;
         this.finalizado = false;

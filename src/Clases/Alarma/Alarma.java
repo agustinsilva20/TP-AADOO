@@ -15,17 +15,22 @@ public class Alarma {
 	private LocalTime ultimaEjecucion;
 	private List<Control> acciones;
 	private Notificador notificador;
-	public TratamientoMedico tratamientoMedico;
-	public Animal animal;
+	private TratamientoMedico tratamientoMedico;
+	private Animal animal;
+
+
 	public Alarma(Animal animal, TratamientoMedico tratamientoMedico, List<Control> acciones, int periodicidad, List<Usuario> veterinarios) {
 		this.animal = animal;
 		this.tratamientoMedico = tratamientoMedico;
 		this.acciones = acciones;
 		this.ultimaEjecucion = null;
-		this.periodicidad =periodicidad;
+		this.periodicidad = periodicidad;
 
 		notificarAVeterinarios(veterinarios, "Accion requerida");
 	}
+
+
+
 	public void notificarAVeterinarios(List<Usuario> veterinarios, String mensaje) {
 		for (Usuario vet: veterinarios){
 			vet.notificar(mensaje);

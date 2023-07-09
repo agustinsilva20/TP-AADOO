@@ -1,17 +1,16 @@
 package Controladores;
 
-import Clases.FichaTecnica.FichaTecnica;
+import Clases.FichaTecnica.FichaTec;
 
 import java.util.List;
 
 public class ControllerFichaTec {
 
     private static ControllerFichaTec instance;
-    private static List<FichaTecnica> FichasTecnicas;
+    private static List<FichaTec> FichasTecnicas;
 
-    private List<FichaTecnica> instanciarFichasTec() {
+    private void instanciarFichasTec() {
         //Instanciar adopciones
-        return null;
     }
 
     private ControllerFichaTec(){}
@@ -23,4 +22,6 @@ public class ControllerFichaTec {
         }
         return instance;
     }
+
+    public void crearFichaTec(){}
 }

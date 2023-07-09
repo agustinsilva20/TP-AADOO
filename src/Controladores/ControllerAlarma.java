@@ -8,9 +8,9 @@ public class ControllerAlarma {
     private static ControllerAlarma instance;
     private static List<Alarma> alarmas;
 
-    private List<Alarma> instanciarAlarmas() {
+    private void instanciarAlarmas() {
         //Instanciar adopciones
-        return null;
+
     }
 
     private ControllerAlarma(){}
@@ -18,7 +18,7 @@ public class ControllerAlarma {
     public static ControllerAlarma getInstance(){
         if (instance == null){
             instance = new ControllerAlarma();
-
+            instance.instanciarAlarmas();
         }
         return instance;
     }

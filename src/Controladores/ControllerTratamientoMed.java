@@ -1,16 +1,17 @@
 package Controladores;
 
+import Clases.TratamientoMedico.TratamientoMed;
 import Clases.TratamientoMedico.TratamientoMedico;
+import Clases.Usuario.Usuario;
 
 import java.util.List;
 
 public class ControllerTratamientoMed {
     private static ControllerTratamientoMed instance;
-    private static List<TratamientoMedico> TratamientosMedicos;
+    private static List<TratamientoMed> tratamientosMed;
 
-    private List<TratamientoMedico> instanciarTratamientosMed() {
+    private void instanciarTratamientosMed() {
         //Instanciar adopciones
-        return null;
     }
 
     private ControllerTratamientoMed(){}
@@ -18,8 +19,11 @@ public class ControllerTratamientoMed {
     public static ControllerTratamientoMed getInstance(){
         if (instance == null){
             instance = new ControllerTratamientoMed();
-
+            instance.instanciarTratamientosMed();
         }
         return instance;
+    }
+    public void crearTratamientoMed(Usuario veterinario, String descripcion){
+        tratamientosMed.add(new TratamientoMed(veterinario,descripcion));
     }
 }
