@@ -6,7 +6,7 @@ public class AlarmaAtendida implements EstadoAlarma {
 
     private Usuario veterinario;
 
-    protected AlarmaAtendida(Usuario veterinario) {
+    public AlarmaAtendida(Usuario veterinario) {
         this.veterinario = veterinario;
     }
 

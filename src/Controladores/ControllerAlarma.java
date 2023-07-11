@@ -37,8 +37,12 @@ public class ControllerAlarma {
 
     }
 
-    public void notificarVeterinarios(Alarma alarma, List<Usuario> veterinarios, String mensaje){
-        alarma.notificarAVeterinarios(veterinarios, mensaje);
+    public Boolean notificarVeterinarios(Alarma alarma, List<Usuario> veterinarios, String mensaje){
+        return alarma.notificarAVeterinarios(veterinarios, mensaje);
+    }
+
+    public void atenderAlarma(Alarma alarma,Usuario veterinario){
+        alarma.atenderAlarma(alarma, veterinario);
     }
 
 }

@@ -9,7 +9,6 @@ public class Control {
         this.detalleControl = tipo;
         this.completado = false;
         this.descripcionTarea = "";
-
     }
 
     private TipoControl detalleControl;

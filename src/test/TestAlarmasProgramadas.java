@@ -71,9 +71,7 @@ public class TestAlarmasProgramadas {
 
         alarma.setNotificador(new Notificador(new NotificadorWhatsapp()));
 
-        controllerAlarma.notificarVeterinarios(alarma, veterinarios,"Alarma activada!");
-
-        Boolean notificaciones_recibidas = true;
+        Boolean notificaciones_recibidas = controllerAlarma.notificarVeterinarios(alarma, veterinarios,"Alarma activada!");
 
 		assertTrue("El resultado no es el esperado", notificaciones_recibidas.equals(Boolean.TRUE));
 	

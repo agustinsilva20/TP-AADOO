@@ -17,7 +17,7 @@ public class Cliente {
         this.estadoCivil = estadoCivil;
         this.ocupacion = ocupacion;
         this.tipoAnimalesInteresados= tipoAnimalesInteresados;
-        this.mascotasAdoptadas = new ArrayList<Animal>();
+        this.mascotasAdoptadas = new ArrayList<>();
     }
 
     private String nombre;
@@ -50,7 +50,5 @@ public class Cliente {
             return ;
         }
         mascotasAdoptadas.add(mascota);
-        //mascota.setSeguimiento(this, usuario_seguimiento, estrategiaNotificacion);
-        //tieneMascotas=true;
     }
 }

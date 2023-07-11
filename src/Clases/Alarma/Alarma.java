@@ -31,11 +31,13 @@ public class Alarma {
     public void cambiarEstado(EstadoAlarma estadoAlarma){
         this.estadoAlarma = estadoAlarma;
     }
-    public void notificarAVeterinarios(List<Usuario> veterinarios, String mensaje) {
+    public Boolean notificarAVeterinarios(List<Usuario> veterinarios, String mensaje) {
         for (Usuario vet: veterinarios){
 
             notificador.notificar(mensaje);
         }
+        Boolean notificacionesEnviadas = true;
+        return notificacionesEnviadas;
     }
 
     public void setNotificador(Notificador notificador) {
@@ -46,4 +48,8 @@ public class Alarma {
         this.notificador.notificar(mensaje);
     }
 
+
+    public void atenderAlarma(Alarma alarma, Usuario veterinario){
+        alarma.estadoAlarma.atenderAlarma(veterinario,alarma);
+    }
 }
