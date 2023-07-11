@@ -5,7 +5,7 @@ import Clases.Usuario.Usuario;
 import java.time.LocalDateTime;
 
 public class VisitaCorreccion {
-    private EncuestaCorreccion encuesta;
+    private Encuesta encuesta;
 
     private LocalDateTime fecha;
 

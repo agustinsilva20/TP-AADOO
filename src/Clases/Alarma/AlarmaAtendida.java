@@ -1,17 +1,17 @@
 package Clases.Alarma;
 
-import Clases.Usuario.UsuarioCorreccion;
+import Clases.Usuario.Usuario;
 
 public class AlarmaAtendida implements EstadoAlarma {
 
-    private UsuarioCorreccion veterinario;
+    private Usuario veterinario;
 
-    protected AlarmaAtendida(UsuarioCorreccion veterinario) {
+    protected AlarmaAtendida(Usuario veterinario) {
         this.veterinario = veterinario;
     }
 
     @Override
-    public void atenderAlarma(UsuarioCorreccion veterinario, AlarmaCorreccion alarma) {
+    public void atenderAlarma(Usuario veterinario, Alarma alarma) {
         System.out.println("Alarma ya atendida.");
     }
 }

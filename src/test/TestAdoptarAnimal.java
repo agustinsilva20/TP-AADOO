@@ -1,39 +1,36 @@
 
 import Clases.Animal.Animal;
-import Clases.Cliente.Cliente;
-import Clases.Cliente.EstadoCivil;
-import Clases.Cliente.Ocupacion;
-import Clases.Cliente.TipoAnimalDomestico;
-import Clases.Exportador.ExportarPDF;
+import Clases.Cliente.*;
 import Clases.Notificador.EstrategiaNotificacion;
+import Clases.Notificador.NotificadorEmail;
 import Clases.Notificador.NotificadorSMS;
 import Clases.Notificador.NotificadorWhatsapp;
-import Clases.Usuario.TipoUsuario;
-import Clases.Usuario.Usuario;
 
 import static org.junit.Assert.assertTrue;
+import java.util.List;
 
-import java.util.ArrayList;
-
+import Clases.Usuario.Usuario;
+import Controladores.ControllerAdopcion;
+import Controladores.ControllerAnimal;
+import Controladores.ControllerCliente;
+import Controladores.ControllerUsuario;
 import org.junit.Before;
 import org.junit.Test;
 
 
 public class TestAdoptarAnimal {
-	static Animal animal1;
-	static Animal animal2;
-	static Animal animal3;
-	static Animal animal4;
-	static Animal animal5;
-	
-	static Cliente cliente;
-	static Usuario usuario_seguimiento;
+	static List<Animal> animales;
+
+	static List<Cliente> clientes;
+
+	static List<Usuario> usuarios;
+
+	static ControllerAdopcion controllerAdopcion;
 	static EstrategiaNotificacion estrategiaNotificacion;
 	
 	@Before
 	public void setUp() throws Exception{
-		cargarDatosAnimales();
-		cargarDatosCliente();
+		cargarDatos();
 	}
 	
 	@Test
@@ -41,9 +38,20 @@ public class TestAdoptarAnimal {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Adoptar un Animal No salvaje Sano");
-		cliente.agregarMascotaAdoptada(animal2, usuario_seguimiento, estrategiaNotificacion);
+		//cliente.agregarMascotaAdoptada(animal2, usuario_seguimiento, estrategiaNotificacion);
+
+		Cliente cliente = clientes.get(0); // Cliente X
+		Usuario usuario = usuarios.get(0); // Usuario X
+		Animal animal = animales.get(1); //Animal sano y domestico
+
+		estrategiaNotificacion = new NotificadorEmail();
+
+		controllerAdopcion.crearAdopcion(usuario,cliente,estrategiaNotificacion,animal);
+
 		int cant_mascotas = cliente.getCantidadMascotas();
-		Boolean cumpleOjetivo = cant_mascotas == 1;
+		System.out.println(cant_mascotas);
+
+		Boolean cumpleOjetivo = cant_mascotas == 1; //Al ser una mascota sana y domestica, puede ser adoptada.
 		assertTrue("El resultado no es el esperado", cumpleOjetivo.equals(Boolean.TRUE));
 	}
 	@Test
@@ -51,9 +59,17 @@ public class TestAdoptarAnimal {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Adoptar un Animal salvaje Sano");
-		cliente.agregarMascotaAdoptada(animal1, usuario_seguimiento, estrategiaNotificacion);
+
+		Cliente cliente = clientes.get(1); // Cliente X
+		Usuario usuario = usuarios.get(1); // Usuario X
+		Animal animal = animales.get(0); //Animal sano y salvaje
+
+		estrategiaNotificacion = new NotificadorSMS();
+
+		controllerAdopcion.crearAdopcion(usuario,cliente,estrategiaNotificacion,animal);
+
 		int cant_mascotas = cliente.getCantidadMascotas();
-		Boolean cumpleOjetivo = cant_mascotas == 0;
+		Boolean cumpleOjetivo = cant_mascotas == 0; //Al ser un animal salvaje, la cantidad de mascotas del cliente no aumenta.
 		assertTrue("El resultado no es el esperado", cumpleOjetivo.equals(Boolean.TRUE));
 	}
 	
@@ -62,7 +78,15 @@ public class TestAdoptarAnimal {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Adoptar un Animal no Sano");
-		cliente.agregarMascotaAdoptada(animal3, usuario_seguimiento, estrategiaNotificacion);
+
+		Cliente cliente = clientes.get(1); // Cliente X
+		Usuario usuario = usuarios.get(2); // Usuario X
+		Animal animal = animales.get(2); //Animal no sano y domestico
+
+		estrategiaNotificacion = new NotificadorWhatsapp();
+
+		controllerAdopcion.crearAdopcion(usuario,cliente,estrategiaNotificacion,animal);
+
 		int cant_mascotas = cliente.getCantidadMascotas();
 		System.out.println(cant_mascotas);
 		Boolean cumpleOjetivo = cant_mascotas == 0;
@@ -74,9 +98,19 @@ public class TestAdoptarAnimal {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Adoptar 3 animales");
-		cliente.agregarMascotaAdoptada(animal2, usuario_seguimiento, estrategiaNotificacion);
-		cliente.agregarMascotaAdoptada(animal4, usuario_seguimiento, estrategiaNotificacion);
-		cliente.agregarMascotaAdoptada(animal5, usuario_seguimiento, estrategiaNotificacion);
+
+		Cliente cliente = clientes.get(2); // Cliente X
+		Usuario usuario = usuarios.get(0); // Usuario X
+		Animal animal1 = animales.get(1); //Animal sano y domestico
+		Animal animal2 = animales.get(3); //Animal sano y domestico
+		Animal animal3 = animales.get(4); //Animal sano y domestico
+
+		estrategiaNotificacion = new NotificadorWhatsapp();
+
+		controllerAdopcion.crearAdopcion(usuario,cliente,estrategiaNotificacion,animal1);
+		controllerAdopcion.crearAdopcion(usuario,cliente,estrategiaNotificacion,animal2);
+		controllerAdopcion.crearAdopcion(usuario,cliente,estrategiaNotificacion,animal3);
+
 		int cant_mascotas = cliente.getCantidadMascotas();
 		System.out.println(cant_mascotas);
 		Boolean cumpleOjetivo = cant_mascotas == 2;
@@ -84,25 +118,18 @@ public class TestAdoptarAnimal {
 		assertTrue("El resultado no es el esperado", cumpleOjetivo.equals(true));
 	}
 	
-	public void cargarDatosCliente()  {
-		cliente = new Cliente("Agustin", "Silva", EstadoCivil.SOLTERO, "agustinsilvab@hotmail.com", 1156223610, Ocupacion.ESTUDIANTE, TipoAnimalDomestico.GATO, false);
-		usuario_seguimiento = new Usuario("Juan", "Gomez", "juangomez@puppies.com", 1155532123, "Juan", TipoUsuario.VISITADOR, "12345678", new NotificadorWhatsapp());
-		estrategiaNotificacion = new NotificadorSMS();
+	public void cargarDatos()  {
+		ControllerCliente controllerCliente = ControllerCliente.getInstance();
+		clientes = controllerCliente.getClientes();
+
+		ControllerUsuario controllerUsuario = ControllerUsuario.getInstance();
+		usuarios = controllerUsuario.getUsuarios();
+
+		ControllerAnimal controllerAnimal = ControllerAnimal.getInstance();
+		animales = controllerAnimal.getAnimales();
+
+		controllerAdopcion = ControllerAdopcion.getInstance();
 	}
 	
-	
-	public void cargarDatosAnimales() {
-		// Animal salvaje sano
-		animal1 = new Animal (0.3, 10.0, 2, true, new ExportarPDF(),true,new ArrayList<>());
-		// Animal no salvaje sano
-		animal2 = new Animal (0.3, 10.0, 2, true, new ExportarPDF(),false,new ArrayList<>());
-		// Animal no salvaje no sano
-		animal3 = new Animal (0.3, 10.0, 2, false, new ExportarPDF(),false,new ArrayList<>());
-		animal3.setEnTratamiento(true);
-		// Animal no salvaje sano
-		animal4 = new Animal (0.3, 10.0, 2, true, new ExportarPDF(),false,new ArrayList<>());
-		// Animal no salvaje sano
-		animal5 = new Animal (0.3, 10.0, 2, true, new ExportarPDF(),false,new ArrayList<>());
-		
-	}
+
 }

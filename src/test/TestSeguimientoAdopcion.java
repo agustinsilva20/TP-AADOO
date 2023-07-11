@@ -1,35 +1,30 @@
 
 import Clases.Animal.Animal;
-import Clases.Cliente.Cliente;
-import Clases.Cliente.EstadoCivil;
-import Clases.Cliente.Ocupacion;
-import Clases.Cliente.TipoAnimalDomestico;
-import Clases.Exportador.ExportarPDF;
+import Clases.Cliente.*;
 import Clases.Notificador.EstrategiaNotificacion;
 import Clases.Notificador.NotificadorSMS;
-import Clases.Notificador.NotificadorWhatsapp;
-import Clases.Usuario.TipoUsuario;
-import Clases.Usuario.Usuario;
+import Clases.SeguimientoAdopcion.Adopcion;
 
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import Clases.Usuario.Usuario;
+import Controladores.ControllerAdopcion;
+import Controladores.ControllerAnimal;
+import Controladores.ControllerCliente;
+import Controladores.ControllerUsuario;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestSeguimientoAdopcion {
-	static Animal animal2;
-	static Cliente cliente;
-	static Usuario usuario_seguimiento;
 	static EstrategiaNotificacion estrategiaNotificacion;
-	static List<Usuario> veterinarios;
+	static Usuario veterinario;
+	static Animal animal;
+	static Cliente cliente;
+	static ControllerAdopcion controllerAdopcion;
 	
 	@Before
 	public void setUp() throws Exception{
-		cargarDatosAnimales();
-		cargarDatosCliente();
+		cargarDatos();
 	}
 	
 	@Test
@@ -37,26 +32,30 @@ public class TestSeguimientoAdopcion {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Configurar seguimiento y enviar notificacion SMS");
-		cliente.agregarMascotaAdoptada(animal2, usuario_seguimiento, estrategiaNotificacion);
-		String confirmacion = animal2.send_notificacion_visita();
-		System.out.println(confirmacion);
-		assertTrue("El resultado no es el esperado", confirmacion.equals("SMS enviado."));
+
+		estrategiaNotificacion = new NotificadorSMS();
+
+		controllerAdopcion.crearAdopcion(veterinario,cliente,estrategiaNotificacion,animal);
+
+		Adopcion adopcion = controllerAdopcion.getAdopciones().get(0);
+
+		String recordatorio = adopcion.enviarRecordatorio("");
+		System.out.println(recordatorio);
+		assertTrue("El resultado no es el esperado", recordatorio.equals("SMS enviado."));
 	}
 	
 
-	public void cargarDatosCliente()  {
-		cliente = new Cliente("Agustin", "Silva", EstadoCivil.SOLTERO, "agustinsilvab@hotmail.com", 1156223610, Ocupacion.ESTUDIANTE, TipoAnimalDomestico.GATO, false);
-		usuario_seguimiento = new Usuario("Juan", "Gomez", "juangomez@puppies.com", 1155532123, "Juan", TipoUsuario.VISITADOR, "12345678", new NotificadorWhatsapp());
-		veterinarios = new ArrayList<Usuario>();
-		veterinarios.add(usuario_seguimiento);
-		estrategiaNotificacion = new NotificadorSMS();
-	}
-	
-	
-	public void cargarDatosAnimales() {
-		
-		// Animal no salvaje sano
-		animal2 = new Animal (0.3, 10.0, 2, true, new ExportarPDF(),false, veterinarios);
-		
+	public void cargarDatos()  {
+		ControllerUsuario controllerUsuario = ControllerUsuario.getInstance();
+		veterinario = controllerUsuario.getVeterinarios().get(0);
+
+		ControllerCliente controllerCliente = ControllerCliente.getInstance();
+		cliente = controllerCliente.getClientes().get(0);
+
+		ControllerAnimal controllerAnimal = ControllerAnimal.getInstance();
+		animal = controllerAnimal.getAnimales().get(1); //Animal sano y domestico
+
+		controllerAdopcion = ControllerAdopcion.getInstance();
+
 	}
 }

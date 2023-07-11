@@ -1,14 +1,15 @@
 package Clases.Cliente;
 
-import java.util.*;
-
 import Clases.Animal.Animal;
 import Clases.Notificador.EstrategiaNotificacion;
 import Clases.Usuario.Usuario;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente {
 
-    public Cliente(String nombre, String apellido, Enum<EstadoCivil> estadoCivil, String email, Integer telefono, Enum<Ocupacion> ocupacion, Enum<TipoAnimalDomestico> tipoAnimalesInteresados, Boolean tieneMascotas) {
+    public Cliente(String nombre, String apellido, Enum<EstadoCivil> estadoCivil, String email, Integer telefono, Enum<Ocupacion> ocupacion, Enum<TipoAnimalDomestico> tipoAnimalesInteresados) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -16,7 +17,6 @@ public class Cliente {
         this.estadoCivil = estadoCivil;
         this.ocupacion = ocupacion;
         this.tipoAnimalesInteresados= tipoAnimalesInteresados;
-        this.tieneMascotas = tieneMascotas;
         this.mascotasAdoptadas = new ArrayList<Animal>();
     }
 
@@ -26,30 +26,31 @@ public class Cliente {
     private String email;
     private Integer telefono;
     private Enum<Ocupacion> ocupacion;
-    private Boolean tieneMascotas;
+
     private String motivoAdopcion;
     private Enum<TipoAnimalDomestico> tipoAnimalesInteresados;
     private List<Animal> mascotasAdoptadas;
 
-    public int getCantidadMascotas() {
-    	return mascotasAdoptadas.size();
-    }
 
+    public int getCantidadMascotas() {
+        return mascotasAdoptadas.size();
+    }
 
     public void agregarMascotaAdoptada(Animal mascota, Usuario usuario_seguimiento, EstrategiaNotificacion estrategiaNotificacion){
-    	if (mascota.getSalvaje() == true) {
-    		return ;
-    	}
-    	if (mascota.enTratamiento() == true) {
-    		return ;
-    	}
-    	if (getCantidadMascotas()>= 2) {
-    		return ;
-    	}
+        if (mascota.getSalvaje() == true) {
+            return ;
+        }
+        if (mascota.enTratamiento() == true) {
+            return ;
+        }
+        if (!mascota.getBuenEstadoSalud()){
+            return;
+        }
+        if (getCantidadMascotas()>= 2) {
+            return ;
+        }
         mascotasAdoptadas.add(mascota);
-        mascota.setSeguimiento(this, usuario_seguimiento, estrategiaNotificacion);
-        tieneMascotas=true;
+        //mascota.setSeguimiento(this, usuario_seguimiento, estrategiaNotificacion);
+        //tieneMascotas=true;
     }
-
-
 }

@@ -5,9 +5,7 @@ import java.util.Date;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
-/**
- * 
- */
+
 public class Cadencia {
 
     public Cadencia() {

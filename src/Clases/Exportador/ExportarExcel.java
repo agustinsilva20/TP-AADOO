@@ -2,8 +2,6 @@ package Clases.Exportador;
 
 import Clases.FichaTecnica.FichaTecnica;
 
-import java.util.*;
-
 
 /**
  * 

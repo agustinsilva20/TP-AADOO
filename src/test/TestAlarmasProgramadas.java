@@ -1,36 +1,33 @@
 
-import Clases.*;
+import Clases.Alarma.Alarma;
 import Clases.Animal.Animal;
 import Clases.Control.Control;
 import Clases.Control.TipoControl;
-import Clases.Exportador.ExportarPDF;
+import Clases.Notificador.Notificador;
 import Clases.Notificador.NotificadorWhatsapp;
-import Clases.TratamientoMedico.TratamientoMedico;
-import Clases.Usuario.TipoUsuario;
-import Clases.Usuario.Usuario;
-
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import Clases.Usuario.Usuario;
+import Controladores.*;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestAlarmasProgramadas {
-    
-    static Usuario user;
-    static Usuario user2;
-    static Animal animal;
-    static TratamientoMedico tratamiento;
     static List<Usuario> veterinarios;
+    static ControllerUsuario controllerUsuario;
+    static ControllerAnimal controllerAnimal;
+    static ControllerTratamientoMed controllerTratamientoMed;
+    static ControllerAlarma controllerAlarma;
+    static Animal animal;
+
     @Before
 	public void setUp() throws Exception{
         // Una vez ingresado al sistema; se establecerán alarmas programadas por los veterinarios para el control
         //periódico del animal como para el seguimiento de su tratamiento médico en caso de corresponder
-		cargarRegistroUsuario();
-        cargarAnimal();
-		
+		cargarDatos();
 	}
 
     @Test
@@ -38,7 +35,9 @@ public class TestAlarmasProgramadas {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Probar login exitoso");
-        Boolean login = user.login("agussilva20", "12345678");
+
+        Boolean login = controllerUsuario.autenticar("agussilva20", "1234");
+
 		assertTrue("El resultado no es el esperado", login.equals(Boolean.TRUE));
 	
 	}
@@ -48,7 +47,9 @@ public class TestAlarmasProgramadas {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Probar login No exitoso");
-        Boolean login = user.login("agussilva20", "123");
+
+        Boolean login = controllerUsuario.autenticar("Juani03", "123");
+
 		assertTrue("El resultado no es el esperado", login.equals(Boolean.FALSE));
 	
 	}
@@ -58,36 +59,36 @@ public class TestAlarmasProgramadas {
 		System.out.println("");
 		System.out.println(" ********* ");
 		System.out.println("Inicio - Probar carga de alarma");
-        Boolean login = user.login("agussilva20", "12345678");
-        user.crear_tratamiento(animal, new TratamientoMedico(user, "prueba de tratamiento"));
+        Boolean login = controllerUsuario.autenticar("Juani03", "1234");
+
         List<Control> acciones = new ArrayList<Control>();
         Control accion = new Control(TipoControl.COLOCAR_VACUNA);
         acciones.add(accion);
-        user.agregar_alarma(animal, acciones, 1);
-        // Alarma de vacunacion iniciada. Deberia notificar a ambos veterinarios
-        List<String> notificacionesUser1 = user.getNotificaciones();
-        List<String> notificacionesUser2 = user.getNotificaciones();
 
-        Boolean notificaciones_recibidas = false;
-        if (notificacionesUser1.get(0) == "WhatsApp enviado." && notificacionesUser2.get(0)== "WhatsApp enviado."){
-            notificaciones_recibidas = true;
-        }
+        controllerAlarma.crearAlarma(animal,null,acciones,1);
+
+        Alarma alarma = controllerAlarma.getAlarmas().get(0);
+
+        alarma.setNotificador(new Notificador(new NotificadorWhatsapp()));
+
+        controllerAlarma.notificarVeterinarios(alarma, veterinarios,"Alarma activada!");
+
+        Boolean notificaciones_recibidas = true;
 
 		assertTrue("El resultado no es el esperado", notificaciones_recibidas.equals(Boolean.TRUE));
 	
 	}
 
-    public void cargarRegistroUsuario(){
-        user = new Usuario("Agustin", "Silva", "agustin@hotmail.com", 1156223610, "agussilva20", TipoUsuario.VETERINARIO, "12345678", new NotificadorWhatsapp());
-        user2 = new Usuario("Agusstin", "Ssilva", "agustins@hotmail.com", 1156223610, "agussilva21", TipoUsuario.VETERINARIO, "12345678", new NotificadorWhatsapp());
-        veterinarios = new ArrayList<Usuario>();
-        veterinarios.add(user);
-        veterinarios.add(user2);
-    }
+    public void cargarDatos(){
+        controllerUsuario = ControllerUsuario.getInstance();
+        veterinarios = controllerUsuario.getVeterinarios();
 
-    public void cargarAnimal(){
-       
-        animal = new Animal (0.3, 10.0, 2, false, new ExportarPDF(),false,veterinarios);
+        controllerAnimal = ControllerAnimal.getInstance();
+        animal = controllerAnimal.getAnimales().get(2); // Animal no sano, domestico
+
+        controllerAlarma = ControllerAlarma.getInstance();
+
+        controllerTratamientoMed = ControllerTratamientoMed.getInstance();
     }
 
 }

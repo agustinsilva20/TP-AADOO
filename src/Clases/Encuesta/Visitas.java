@@ -1,10 +1,8 @@
 package Clases.Encuesta;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-import Clases.Encuesta.Encuesta;
 import Clases.Usuario.Usuario;
+
+import java.time.LocalDateTime;
 
 public class Visitas {
     private Encuesta encuesta;

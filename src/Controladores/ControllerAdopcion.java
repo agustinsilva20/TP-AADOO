@@ -1,19 +1,17 @@
 package Controladores;
 
-import Clases.Animal.AnimalCorreccion;
-import Clases.Cliente.ClienteCorreccion;
+import Clases.Animal.Animal;
+import Clases.Cliente.Cliente;
 import Clases.Notificador.EstrategiaNotificacion;
-import Clases.Notificador.Notificador;
-import Clases.Notificador.NotificadorSMS;
-import Clases.SeguimientoAdopcion.AdopcionCorreccion;
-import Clases.SeguimientoAdopcion.SeguimientoAdopcion;
-import Clases.Usuario.UsuarioCorreccion;
+import Clases.SeguimientoAdopcion.Adopcion;
+import Clases.Usuario.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerAdopcion {
     private static ControllerAdopcion instance;
-    private static List<AdopcionCorreccion> adopciones;
+    private static List<Adopcion> adopciones = new ArrayList<>();
 
     private void instanciarAdopciones() {
         //Instanciar adopciones
@@ -29,7 +27,12 @@ public class ControllerAdopcion {
         return instance;
     }
 
-    public void crearAdopcion(UsuarioCorreccion usuario, ClienteCorreccion cliente, EstrategiaNotificacion estrategiaNotificacion,AnimalCorreccion mascota ){
-        adopciones.add(new AdopcionCorreccion(cliente,usuario,estrategiaNotificacion,mascota));
+    public List<Adopcion> getAdopciones(){
+        return adopciones;
+    }
+
+    public void crearAdopcion(Usuario usuario, Cliente cliente, EstrategiaNotificacion estrategiaNotificacion, Animal mascota ){
+        adopciones.add(new Adopcion(cliente,usuario,estrategiaNotificacion,mascota));
+        cliente.agregarMascotaAdoptada(mascota,usuario,estrategiaNotificacion);
     }
 }

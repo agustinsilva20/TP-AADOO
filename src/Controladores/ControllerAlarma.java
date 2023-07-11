@@ -1,12 +1,17 @@
 package Controladores;
 
 import Clases.Alarma.Alarma;
+import Clases.Animal.Animal;
+import Clases.Control.Control;
+import Clases.TratamientoMedico.TratamientoMed;
+import Clases.Usuario.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerAlarma {
     private static ControllerAlarma instance;
-    private static List<Alarma> alarmas;
+    private static List<Alarma> alarmas = new ArrayList<>();
 
     private void instanciarAlarmas() {
         //Instanciar adopciones
@@ -22,4 +27,18 @@ public class ControllerAlarma {
         }
         return instance;
     }
+
+    public List<Alarma> getAlarmas(){
+        return alarmas;
+    }
+
+    public void crearAlarma(Animal animal, TratamientoMed tratamientoMed, List<Control> acciones, int periodicidad){
+        alarmas.add(new Alarma(animal,tratamientoMed,acciones,periodicidad));
+
+    }
+
+    public void notificarVeterinarios(Alarma alarma, List<Usuario> veterinarios, String mensaje){
+        alarma.notificarAVeterinarios(veterinarios, mensaje);
+    }
+
 }

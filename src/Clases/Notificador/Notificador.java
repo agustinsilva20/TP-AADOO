@@ -1,7 +1,5 @@
 package Clases.Notificador;
 
-import Clases.Cliente.Cliente;
-
 public class Notificador {
     private EstrategiaNotificacion estrategiaNotificacion;
 

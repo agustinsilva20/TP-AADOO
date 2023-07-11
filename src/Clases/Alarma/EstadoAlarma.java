@@ -1,7 +1,7 @@
 package Clases.Alarma;
 
-import Clases.Usuario.UsuarioCorreccion;
+import Clases.Usuario.Usuario;
 
 public interface EstadoAlarma {
-    void atenderAlarma(UsuarioCorreccion veterinario, AlarmaCorreccion alarma);
+    void atenderAlarma(Usuario veterinario, Alarma alarma);
 }

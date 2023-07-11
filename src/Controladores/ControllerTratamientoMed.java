@@ -1,14 +1,14 @@
 package Controladores;
 
 import Clases.TratamientoMedico.TratamientoMed;
-import Clases.TratamientoMedico.TratamientoMedico;
 import Clases.Usuario.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerTratamientoMed {
     private static ControllerTratamientoMed instance;
-    private static List<TratamientoMed> tratamientosMed;
+    private static List<TratamientoMed> tratamientosMed = new ArrayList<>();
 
     private void instanciarTratamientosMed() {
         //Instanciar adopciones

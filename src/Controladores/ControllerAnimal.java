@@ -1,13 +1,15 @@
 package Controladores;
 
 
-import Clases.Animal.AnimalCorreccion;
+import Clases.Animal.Animal;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerAnimal {
 
     private static ControllerAnimal instance;
-    private static List<AnimalCorreccion> animales;
+    private static List<Animal> animales = new ArrayList<>();
 
     private ControllerAnimal(){}
 
@@ -20,18 +22,18 @@ public class ControllerAnimal {
     }
 
     private void instanciarAnimales() {
-        animales.add(new AnimalCorreccion(0.3, 10.0, 2, true,true));
-        animales.add(new AnimalCorreccion(0.3, 10.0, 2, true,false));
-        animales.add(new AnimalCorreccion(0.3, 10.0, 2, false,false));
-        animales.add(new AnimalCorreccion(0.3, 10.0, 2, true,false));
-        animales.add(new AnimalCorreccion(0.3, 10.0, 2, true,false));
+        animales.add(new Animal(0.3, 10.0, 2, true,true));
+        animales.add(new Animal(0.3, 10.0, 2, true,false));
+        animales.add(new Animal(0.3, 10.0, 2, false,false));
+        animales.add(new Animal(0.3, 10.0, 2, true,false));
+        animales.add(new Animal(0.3, 10.0, 2, true,false));
     }
 
-    public List<AnimalCorreccion> getAnimales(){
+    public List<Animal> getAnimales(){
         return animales;
     }
 
-    public void agregarAnimal(AnimalCorreccion animal){
+    public void agregarAnimal(Animal animal){
         animales.add(animal);
     }
 }
